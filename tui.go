@@ -81,6 +81,14 @@ func main() {
 
 	// Assert the final tea.Model to our local model and print the choice.
 	if m, ok := m.(model); ok && m.choice != "" {
-		fmt.Printf("\n---\nYou chose %s!\n", m.choice)
-	}
+		if m.choice == "Devices" {
+			fmt.Println("Devices was selected")
+		} else if m.choice == "Jailbreak" {
+			fmt.Println("Jailbreak was selected")
+		} else if m.choice == "Settings" {
+			fmt.Println("Settings was selected")
+		} else if m.choice == "Updates" {
+			fmt.Printf("Updates was selected")
+		}
+	} 
 }
