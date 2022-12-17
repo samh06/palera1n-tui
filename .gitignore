@@ -20,3 +20,5 @@ palera1n/logs
 palera1n/.disclaimeragree
 palera1n/.fs-*
 
+src/tui.*
+src/tui
