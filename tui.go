@@ -89,6 +89,8 @@ func main() {
 			fmt.Println("Settings was selected")
 		} else if m.choice == "Updates" {
 			fmt.Printf("Updates was selected")
+		} else {
+			fmt.Println("Unknown choice was selected")
 		}
 	} 
 }
