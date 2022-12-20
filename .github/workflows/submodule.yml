@@ -19,7 +19,7 @@ jobs:
 
     - name: Update submodules
       run: |
-        cd ramdisk
+        cd palera1n
         git pull origin main
         cd ..
 
