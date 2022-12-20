@@ -20,7 +20,7 @@ jobs:
     - name: Update submodules
       run: |
         cd palera1n
-        git config pull.ff only
+        git config pull.rebase true
         git pull origin main
         cd ..
 
