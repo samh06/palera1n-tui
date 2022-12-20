@@ -19,6 +19,7 @@ jobs:
 
     - name: Update submodules
       run: |
+        git add ramdisk
         cd palera1n
         git add ramdisk
         git config pull.rebase true
