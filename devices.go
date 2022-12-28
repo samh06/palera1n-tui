@@ -4,7 +4,6 @@ package main
 // program after the Bubble Tea has exited.
 
 import (
-	"fmt"
 	"os"
 )
 
@@ -15,21 +14,27 @@ func check(e error) {
 }
 
 func devices() {
-	writeFile("./tmp1", "\nasd2", false)
+	parseDevice("1", "asd", "--tweaks 15.4 --semi-tethered")
 }
 
-func writeFile(file string, text string, overwrite bool) {
+func writeFile(file string, text string) {
 	// If not overwriting, most of the time you will want a /n at the start of your string
-	if overwrite {
-		data := []byte(text)
-    	err := os.WriteFile(file, data, 0644)
-    	check(err)
-	} else {
-		readData, readError := os.ReadFile(file)
-    	check(readError)
-    	fmt.Print(string(readData))
+	readData, readError := os.ReadFile(file)
+	if readError != nil {
+		os.Create(file)
+		readData, readError = os.ReadFile(file)
 		data := []byte(string(readData)+text)
-    	writeError := os.WriteFile(file, data, 0644)
-    	check(writeError)
+		writeError := os.WriteFile(file, data, 0644)
+		check(writeError)
+	} else {
+		data := []byte(string(readData)+"\n"+text)
+		writeError := os.WriteFile(file, data, 0644)
+		check(writeError)
 	}
+}
+
+func parseDevice(id string, nickname string, commands string) {
+	sep := ";"
+	Device := id+sep+nickname+sep+commands
+	writeFile("./tmp1", Device)
 }
